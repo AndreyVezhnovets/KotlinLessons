@@ -13,5 +13,16 @@ fun todoTask1(collection: Collection<Int>): Nothing = TODO(
 
 
 fun task1(collection: Collection<Int>): String {
-    todoTask1(collection)
+    val build= StringBuilder()
+    build.append("{")
+    val iterator = collection.iterator()
+    while (iterator.hasNext()) {
+        val element = iterator.next()
+        build.append(element)
+        if (iterator.hasNext()) {
+            build.append(", ")
+        }
+    }
+    build.append("}")
+    return build.toString()
 }
