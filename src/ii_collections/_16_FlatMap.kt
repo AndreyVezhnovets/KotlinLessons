@@ -1,5 +1,7 @@
 package ii_collections
 
+import ii_collections.data.orderedProducts
+
 fun example() {
 
     val result = listOf("abc", "12").flatMap { it.toList() }
@@ -9,10 +11,27 @@ fun example() {
 
 val Customer.orderedProducts: Set<Product> get() {
     // Return all products ordered by customer
-    todoCollectionTask()
+   // todoCollectionTask()
+    return orders.flatMap { it.products }.toSet()
+
 }
 
 val Shop.allOrderedProducts: Set<Product> get() {
-    // Return all products that were ordered by at least one customer
-    todoCollectionTask()
+    //   return orderedProducts
+  return customers.flatMap { it.orderedProducts }.toSet()
+
 }
+
+
+/*
+fun main(a: Array<String>){
+
+    val a:MutableList<String> = mutableListOf("абв","где","123")
+    a.add("15")
+    a.add("жзи")
+print(a.map { it+1 }).toString()
+    println()
+  val c=  a.flatMap { it.map { it+6 } }.toString()
+    print(c)
+
+}*/
